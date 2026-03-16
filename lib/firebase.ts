@@ -1,8 +1,7 @@
-// Powered By KalJamsut & XyTeam
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
-// Ambil config ini dari Console Firebase lu (Project Settings)
 const firebaseConfig = {
     apiKey: "AIzaSyAqBIqFt3AKBavzVNr-VS9AlS7drPXXfcg",
     authDomain: "kall-e4441.firebaseapp.com",
@@ -10,11 +9,13 @@ const firebaseConfig = {
     projectId: "kall-e4441",
     storageBucket: "kall-e4441.firebasestorage.app",
     messagingSenderId: "232976172726",
-    appId: "1:232976172726:web:3cd3f6338a4ec52ba58817"
+    appId: "1:232976172726:web:3cd3f6338a4ec52ba58817",
+    measurementId: "G-YQBDKK616N"
 };
 
-// Biar gak double initialize pas development (Fast Refresh)
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
-export { db };
+export { db, auth, googleProvider };
